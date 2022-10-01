@@ -1,0 +1,16 @@
+.single-repo {
+  border: 1px solid black;
+  border-radius: 15px;
+  padding: 10px;
+  margin: 15px;
+  display: flex;
+  gap: 15px;
+  width: 620px;
+}
+
+.repo-description {
+  margin: 0px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}

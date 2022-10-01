@@ -1,0 +1,20 @@
+body {
+  box-sizing: border-box;
+  margin: 0px;
+}
+
+.user-detail {
+  display: flex;
+  border: 1px solid grey;
+  border-radius: 15px;
+  width: fit-content;
+  padding: 15px;
+  gap: 15px;
+}
+
+.parent-repo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 30px;
+}
