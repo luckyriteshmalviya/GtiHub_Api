@@ -1,13 +1,8 @@
 import { useEffect } from "react";
 import { useState } from "react";
-import {
-  useLocation,
-  useNavigate,
-  useParams,
-  useSearchParams,
-} from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import "./MainPage.css";
-import SingleRepo from "./SingleRepo/SingleRepo";
+import RepoList from "./RepoList/RepoList";
 import UserDetails from "./UserDetails";
 
 function MainPage() {
@@ -23,27 +18,24 @@ function MainPage() {
       return;
     }
     document.getElementById("user-content").style.display = "block";
-    fetch(`https://api.github.com/users/${name ? name : inputText}/repos`)
+    fetch(`https://api.github.com/users/${name}/repos`)
       .then((res) => res.json())
       .then((item) => setRepos(item));
 
-    fetch(`https://api.github.com/users/${name ? name : inputText}`)
+    fetch(`https://api.github.com/users/${name}`)
       .then((res) => res.json())
       .then((item) => setData(item));
   }, []);
-
-  function handleAllRepos() {
-    fetch(`https://api.github.com/users/${inputText}/repos`)
-      .then((res) => res.json())
-      .then((item) => setRepos(item));
-  }
 
   function handleSearch() {
     document.getElementById("user-content").style.display = "block";
     fetch(`https://api.github.com/users/${inputText}`)
       .then((res) => res.json())
       .then((item) => setData(item));
-    handleAllRepos();
+
+    fetch(`https://api.github.com/users/${inputText}/repos`)
+      .then((res) => res.json())
+      .then((item) => setRepos(item));
   }
 
   return (
@@ -64,9 +56,10 @@ function MainPage() {
         <div>
           <UserDetails data={data} />
         </div>
-        <h4>Repositories</h4>
+        <hr />
+        <h4 style={{ paddingLeft: "50px" }}>Repositories</h4>
         <div className="parent-repo">
-          <SingleRepo repos={repos} data={data} />
+          <RepoList repos={repos} />
         </div>
       </div>
     </>

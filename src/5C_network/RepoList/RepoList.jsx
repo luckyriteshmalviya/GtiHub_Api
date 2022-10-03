@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import "./SingleRepo.css";
+import "./RepoList.css";
 
-function SingleRepo({ repos, data }) {
+function RepoList({ repos }) {
   return repos.map((rep, index) => {
     return (
       <Link
@@ -10,7 +10,7 @@ function SingleRepo({ repos, data }) {
         key={index}
       >
         <span>
-          <img width="70px" src={data.avatar_url} alt="users-repo-image" />
+          <img width="70px" src={rep.owner.avatar_url} alt="users-repo-image" />
         </span>
         <span style={{ overflowY: "hidden" }}>
           <h5 style={{ color: "#5b5bd9", textAlign: "left" }}> {rep.name} </h5>
@@ -21,4 +21,4 @@ function SingleRepo({ repos, data }) {
   });
 }
 
-export default SingleRepo;
+export default RepoList;

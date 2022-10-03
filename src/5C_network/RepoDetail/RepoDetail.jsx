@@ -21,7 +21,7 @@ function RepoDetail() {
         }}
       >
         <div style={{ width: "280px" }}>
-          {/* <img width="80px" src={repo.owner.avatar_url} alt="image" /> */}
+          <img width="80px" src={repo?.owner?.avatar_url} alt="image" />
           <h5>Verified by GitHub</h5>
           <p>
             Github confirms that this apps meets the requirement for minimum
@@ -42,7 +42,7 @@ function RepoDetail() {
             {repo.full_name}
           </p>
           <p>
-            <b>Decription : </b>
+            <b>Description : </b>
             {repo.description}
           </p>
           <p>

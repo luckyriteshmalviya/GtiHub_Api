@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import "./MainPage.css";
 
 function UserDetails({ data }) {
-  console.log({ data });
   return (
     <div className="user-detail" style={{ margin: "4rem" }}>
       <div>
