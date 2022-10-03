@@ -1,37 +1,22 @@
-import { useState } from "react";
+import { Link } from "react-router-dom";
 import "./SingleRepo.css";
 
 function SingleRepo({ repos, data }) {
-  const [repostate, setRepoState] = useState({
-    name: "",
-    avatar_url: "",
-    description: "",
-  });
-  console.log(repostate);
-  function handleRepoDetail(rep) {
-    setRepoState({
-      ...repostate,
-      name: rep.name,
-      avatar_url: rep.owner.avatar_url,
-      description: rep.description,
-    });
-  }
-
   return repos.map((rep, index) => {
     return (
-      <div
-        onClick={() => handleRepoDetail(rep)}
+      <Link
+        to={`/repo/${rep.owner.login}/${rep.name}`}
         className="single-repo"
         key={index}
       >
         <span>
-          <img width="50px" src={data.avatar_url} alt="users-repo-image" />
+          <img width="70px" src={data.avatar_url} alt="users-repo-image" />
         </span>
-        <span>
-          <b> {rep.name} </b> <br />
+        <span style={{ overflowY: "hidden" }}>
+          <h5 style={{ color: "#5b5bd9", textAlign: "left" }}> {rep.name} </h5>
           <p className="repo-description">{rep.description}</p>
         </span>
-      </div>
+      </Link>
     );
   });
 }
